@@ -38,12 +38,12 @@ con cualquier otro.
 
 ### Instalación de Dependencias
 Es necesario tener instalado Virtualbox, se recomienda hacerlo desde la web
-[oficial](https://www.virtualbox.org/wiki/Downloads) e instalar también el
+[Oficial](https://www.virtualbox.org/wiki/Downloads) e instalar también el
 "Extension Pack".
 
 ```bash
 # Instalar VirtualBox
-# (por si no se quiera hacer desde la web oficial)
+# (por si no se quiere hacer desde la web oficial)
 brew install --cask virtualbox
 
 # Instalar Vagrant
