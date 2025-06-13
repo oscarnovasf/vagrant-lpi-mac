@@ -53,6 +53,7 @@ brew install hashicorp/tap/hashicorp-vagrant
 # Instalar plugins opcionales
 vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-disksize
+vagrant plugin install vagrant-rsync-back
 ```
 
 ### Verificación del Sistema
@@ -69,6 +70,19 @@ VBoxManage --version
 
 # Verificar disponibilidad de NFS
 sudo nfsd status
+```
+
+### Ajustes para usuarios MAC/Linux
+Para que las redes sólo de host puedan estar en cualquier rango, no sólo 
+192.168.56.0/21 como se describe aquí: 
+
+- https://discuss.hashicorp.com/t/vagrant-2-2-18-osx-11-6-cannot-create-private-network/30984/23
+
+Es necesito crear/editar el archivo `/etc/vbox/networks.conf`:
+
+```bash
+sudo mkdir -p /etc/vbox/
+echo "* 0.0.0.0/0 ::/0" | sudo tee -a /etc/vbox/networks.conf
 ```
 
 ---
