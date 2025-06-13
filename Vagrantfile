@@ -42,9 +42,37 @@ Vagrant.configure("2") do |config|
     vb.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata', '--controller', 'IntelAHCI']
   end
 
+  # ############################################################################
+  # SINCRONIZACIÓN DE CARPETAS.
+  # ############################################################################
+
+  # RECOMENDACIONES USUARIOS MAC SILICON (M1, M2...):
+  # - Las carpetas compartidas tipo "virtualbox" no funcionan bien
+  #   por lo que se recomienda usar "nfs" o "rsync".
+  # - Si el proyecto está alojado en un disco duro externo "nfs" no funcionará,
+  #   por lo que se recomienda usar "rsync".
+
   # DESHABILITAR carpetas compartidas por defecto de VirtualBox
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
+  # Carpeta compartida tipo "virtualbox".
+  # config.vm.synced_folder "./html", "/var/www/html",
+  #   type: "virtualbox"
+
+  # Carpeta compartida tipo "nfs".
+  # config.vm.synced_folder "./html", "/var/www/html",
+  #   type: "nfs",
+  #   nfs_udp: false,
+  #   nfs_version: 3
+
+  # Carpeta compartida tipo "rsync".
+  # No sincroniza automáticamente, hay que ejecutar:
+  # - `vagrant rsync <maquina>`          sincronizar HOST -> VM.
+  # - `vagrant rsync-back <maquina>`     sincronizar VM -> HOSTS.
+  config.vm.synced_folder "./html", "/var/www/html",
+    type: "rsync",
+    rsync__auto: true,
+    rsync__exclude: [".git/", ".DS_Store"]
 
   # ############################################################################
   # ROCKY LINUX.
@@ -56,12 +84,6 @@ Vagrant.configure("2") do |config|
     rocky.vm.network "private_network", ip: "192.168.33.10"
     # rocky.vm.network "forwarded_port", guest: 80, host: 8010
     # rocky.vm.network "forwarded_port", guest: 10000, host: 10010
-
-    # Sincronización bidireccional con NFS
-    rocky.vm.synced_folder "./html", "/var/www/html",
-      type: "nfs",
-      nfs_udp: false,
-      nfs_version: 3
 
     rocky.vm.provider "virtualbox" do |vb|
       vb.name = "Rocky"
@@ -92,12 +114,6 @@ Vagrant.configure("2") do |config|
     debian.vm.network "private_network", ip: "192.168.33.11"
     # debian.vm.network "forwarded_port", guest: 80, host: 8011
     # debian.vm.network "forwarded_port", guest: 10000, host: 10011
-
-    # Sincronización bidireccional con NFS
-    debian.vm.synced_folder "./html", "/var/www/html",
-      type: "nfs",
-      nfs_udp: false,
-      nfs_version: 3
 
     debian.vm.provider "virtualbox" do |vb|
       vb.name = "Debian"
