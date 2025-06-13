@@ -63,7 +63,7 @@ sudo apt install -y rsyslog bash-completion chrony apache2 dnsutils pciutils bui
 sudo apt install -y network-manager aptitude
 sudo apt install -y zip unzip p7zip-full tar gzip bzip2 xz-utils lz4 zstd
 sudo apt install -y console-setup keyboard-configuration
-sudo apt install -y passwd login adduse
+sudo apt install -y passwd login adduser
 
 echo -e "\n ${YELLOW}Configurando herramientas...${RESET}"
 linea
