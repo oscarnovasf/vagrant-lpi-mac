@@ -59,7 +59,7 @@ dnf update -y
 
 echo -e "\n ${YELLOW}Instalando herramientas...${RESET}"
 linea
-dnf install bash-completion rsyslog chrony httpd bind-utils pciutils procps-ng psmisc mc glibc-langpack-en glibc-langpack-es glibc-common -y
+sudo dnf install bash-completion rsyslog chrony httpd bind-utils pciutils procps-ng psmisc mc glibc-langpack-en glibc-langpack-es glibc-common nfs-utils -y
 sudo dnf install zip unzip tar gzip bzip2 xz lz4 zstd -y
 sudo dnf groupinstall "Development Tools" -y
 sudo dnf install kbd -y

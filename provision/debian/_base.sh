@@ -59,10 +59,11 @@ sudo apt update -y
 
 echo -e "\n ${YELLOW}Instalando herramientas...${RESET}"
 linea
-sudo apt install -y rsyslog bash-completion chrony apache2 dnsutils pciutils build-essential procps psmisc mc locales
-sudo apt install zip unzip p7zip-full tar gzip bzip2 xz-utils lz4 zstd -y
-sudo apt install console-setup keyboard-configuration -y
-sudo apt install passwd login adduser -y
+sudo apt install -y rsyslog bash-completion chrony apache2 dnsutils pciutils build-essential procps psmisc mc locales nfs-common
+sudo apt install -y network-manager aptitude
+sudo apt install -y zip unzip p7zip-full tar gzip bzip2 xz-utils lz4 zstd
+sudo apt install -y console-setup keyboard-configuration
+sudo apt install -y passwd login adduse
 
 echo -e "\n ${YELLOW}Configurando herramientas...${RESET}"
 linea
