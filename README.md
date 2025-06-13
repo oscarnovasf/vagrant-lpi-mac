@@ -26,9 +26,10 @@ Máquinas virtuales compatibles con MAC Silicon tanto con base RHL como Debian.
 - **Vagrant** versión 2.4.0 o superior
 - **NFS** habilitado en macOS (para carpetas compartidas)
 
-### Plugins de Vagrant (opcionales pero recomendados)
-- `vagrant-vbguest` - Para gestión automática de Guest Additions
-- `vagrant-disksize` - Para redimensionar discos virtuales
+### Plugins de Vagrant
+- `vagrant-vbguest`    - Para gestión automática de Guest Additions
+- `vagrant-disksize`   - Para redimensionar discos virtuales
+- `vagrant-rsync-back` - Para sincronizar desde VM a HOST.
 
 ---
 
